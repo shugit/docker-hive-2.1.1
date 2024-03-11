@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo "Configuring Hadoop in entrypoint.sh"
+echo "Downloading mysql-connector-java-5.1.49.jar"
+curl -o /opt/hive/lib/mysql-connector-java-5.1.49.jar https://repo1.maven.org/maven2/mysql/mysql-connector-java/5.1.49/mysql-connector-java-5.1.49.jar &&
+
 # Set some sensible defaults
 export CORE_CONF_fs_defaultFS=${CORE_CONF_fs_defaultFS:-hdfs://`hostname -f`:8020}
 

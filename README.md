@@ -2,19 +2,22 @@
 
 # docker-hive
 
-This is a docker container for Apache Hive 2.3.2. It is based on https://github.com/big-data-europe/docker-hadoop so check there for Hadoop configurations.
+This is a docker container for Apache Hive 2.1.1. 
+It is based on https://github.com/big-data-europe/docker-hadoop and https://github.com/big-data-europe/docker-hive so check there for Hadoop configurations.
 This deploys Hive and starts a hiveserver2 on port 10000.
-Metastore is running with a connection to postgresql database.
+Metastore is running with a connection to Mysql 5.7.41 database.
 The hive configuration is performed with HIVE_SITE_CONF_ variables (see hadoop-hive.env for an example).
-
-To run Hive with postgresql metastore:
+Run
+```
+    docker build -t custom-mysql:5.7.41 --platform linux/amd64 -f Dockerfile-mysql .
+```
+and 
+```
+    docker build -t hive:2.1.1 --platform linux/amd64 .
+```
+To run Hive with mysql metastore:
 ```
     docker-compose up -d
-```
-
-To deploy in Docker Swarm:
-```
-    docker stack deploy -c docker-compose.yml hive
 ```
 
 To run a PrestoDB 0.181 with Hive connector:
@@ -44,6 +47,4 @@ Then query it from PrestoDB. You can get [presto.jar](https://prestosql.io/docs/
 ```
 
 ## Contributors
-* Ivan Ermilov [@earthquakesan](https://github.com/earthquakesan) (maintainer)
-* Yiannis Mouchakis [@gmouchakis](https://github.com/gmouchakis)
-* Ke Zhu [@shawnzhu](https://github.com/shawnzhu)
+* Shuwen [@shugit](https://github.com/shugit) (maintainer)
