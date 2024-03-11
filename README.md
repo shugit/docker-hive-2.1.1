@@ -9,7 +9,7 @@ Metastore is running with a connection to Mysql 5.7.41 database.
 The hive configuration is performed with HIVE_SITE_CONF_ variables (see hadoop-hive.env for an example).
 Run
 ```
-    docker build -t custom-mysql:5.7.41 --platform linux/amd64 -f Dockerfile-mysql .
+    docker build -t hive-mysql:5.7.41 --platform linux/amd64 -f Dockerfile-mysql .
 ```
 and 
 ```
